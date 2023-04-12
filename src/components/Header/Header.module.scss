@@ -1,0 +1,51 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.header {
+  background-color: $grey;
+  padding: 30px 0;
+}
+
+.title {
+  color: $green;
+  font-size: 20px;
+  font-weight: 700;
+  @media (max-width: 375px) {
+    font-size: 17px;
+  }
+}
+
+.inner {
+  @include flex(space-between);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  @include button(white, $green);
+  padding: 15px 20px 15px 0;
+  span {
+    min-width: 45px;
+  }
+  @media (max-width: 375px) {
+    padding: 10px;
+  }
+}
+
+.imgbox {
+  @include flex(center);
+  border-right: 1px solid $grey;
+  margin-right: 25px;
+  padding: 0 20px;
+  span {
+    min-width: 25px;
+    margin-right: 5px;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+  }
+  @media (max-width: 375px) {
+    padding: 0 5px 0 0;
+  }
+}

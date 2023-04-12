@@ -1,0 +1,39 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  margin-top: 40px;
+}
+
+.inner {
+  background-color: $grey;
+  border-radius: 10px;
+  padding: 50px 30px;
+  margin-bottom: 10px;
+}
+
+.countBox {
+  color: $dark-grey;
+  font-size: 16px;
+  margin-bottom: 15px;
+  @include flex(space-between);
+}
+
+.priceBox {
+  @include flex(space-between);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $green;
+}
+
+.price {
+  color: $dark-grey;
+}
+
+.btn {
+  display: block;
+  @include button(white, $green);
+}

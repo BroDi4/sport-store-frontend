@@ -1,0 +1,203 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  background-color: $grey;
+  margin-top: 15px;
+  border-radius: 10px;
+  padding: 20px 40px;
+  @media (max-width: 969px) {
+    padding: 20px;
+  }
+  @media (max-width: 425px) {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+.backBtn {
+  display: inline-block;
+  @include button(white, $green);
+  margin-top: 15px;
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
+}
+
+.header {
+  display: grid;
+  grid-template-areas:
+    'img title'
+    'img price';
+  grid-template-columns: 340px 1fr;
+  grid-auto-rows: minmax(0, 210px);
+  grid-column-gap: 30px;
+  margin-bottom: 20px;
+  @media (max-width: 969px) {
+    grid-template-columns: 270px 1fr;
+  }
+  @media (max-width: 769px) {
+    display: block;
+  }
+}
+
+.imgBox {
+  grid-area: img;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  @media (max-width: 769px) {
+    height: 800px;
+  }
+  @media (max-width: 569px) {
+    height: 600px;
+  }
+  @media (max-width: 425px) {
+    height: 450px;
+  }
+}
+
+.titleBox {
+  grid-area: title;
+  display: grid;
+  grid-template-areas:
+    'name name'
+    'names values';
+  grid-template-columns: 45% 1fr;
+  column-gap: 10px;
+  p {
+    font-size: 21px;
+    color: $dark-grey;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  @media (max-width: 980px) {
+    grid-template-columns: 60% 1fr;
+    p {
+      font-size: 17px;
+    }
+  }
+  @media (max-width: 769px) {
+    margin: 20px 0;
+  }
+  @media (max-width: 425px) {
+    p {
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 350px) {
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+.title {
+  align-self: center;
+  @include title($green, 30px);
+  grid-area: name;
+  margin-bottom: 10px;
+  @media (max-width: 980px) {
+    font-size: 25px;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 23px;
+  }
+}
+
+.names {
+  grid-area: names;
+}
+
+.values {
+  grid-area: values;
+  font-weight: 700;
+}
+
+.priceBox {
+  grid-area: price;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 30px;
+  p {
+    font-size: 20px;
+    color: $dark-grey;
+    margin-bottom: 25px;
+  }
+  @media (max-width: 425px) {
+    padding: 15px;
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+.btn {
+  @include button(white, $green);
+  font-size: 19px;
+  padding: 10px 100px;
+  display: inline-block;
+  align-self: start;
+  @media (max-width: 980px) {
+    padding: 10px 70px;
+  }
+  @media (max-width: 425px) {
+    font-size: 17px;
+    padding: 10px 45px;
+  }
+}
+
+.confButton {
+  @include button(white, darken($green, 15%));
+  padding: 10px 100px;
+  display: inline-block;
+  align-self: start;
+  font-size: 19px;
+  @include confButton(120%, -10%, -45px);
+  @media (max-width: 980px) {
+    padding: 10px 70px;
+  }
+  @media (max-width: 425px) {
+    font-size: 17px;
+
+    padding: 10px 45px;
+  }
+}
+
+.description {
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+
+  h3 {
+    @include title($dark-grey, 28px);
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 425px) {
+    padding: 10px;
+    h3 {
+      font-size: 23px;
+    }
+  }
+}
+
+.descBody {
+  color: $dark-grey;
+  font-size: 20px;
+  line-height: 130%;
+  @media (max-width: 425px) {
+    font-size: 17px;
+  }
+  @media (max-width: 350px) {
+    font-size: 15px;
+  }
+}

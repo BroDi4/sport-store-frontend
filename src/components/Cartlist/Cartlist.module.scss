@@ -1,0 +1,41 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  margin: 30px 0;
+}
+
+.titlebox {
+  @include flex(space-between);
+  align-items: center;
+  margin-bottom: 10px;
+  h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: $dark-grey;
+  }
+  @media (max-width: 375px) {
+    display: block;
+  }
+}
+
+.delcart {
+  cursor: pointer;
+  display: inline-block;
+  color: $green;
+  font-weight: 700;
+  transition: color linear 0.2s;
+  @include hoverLine($green);
+  @media (max-width: 375px) {
+    margin: 10px 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 2fr 1fr;
+  @media (max-width: 890px) {
+    display: block;
+  }
+}

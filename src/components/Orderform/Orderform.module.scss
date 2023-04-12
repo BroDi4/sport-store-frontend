@@ -1,0 +1,107 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  background-color: $grey;
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 60px 70px;
+}
+
+.title {
+  @include title($green, 28px);
+  text-align: center;
+}
+
+.inputBox {
+  margin-top: 25px;
+  @include flex(center);
+  flex-direction: column;
+}
+
+.input {
+  color: $dark-grey;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  &:focus {
+    outline: 1px solid $green;
+  }
+}
+
+.btnBox {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.error {
+  color: $red;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.inputErr {
+  outline: 1px solid $red;
+}
+
+.label {
+  width: 100%;
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+  label {
+    display: inline-block;
+    color: $dark-grey;
+    margin-bottom: 10px;
+  }
+}
+
+.btn {
+  margin-top: 40px;
+  width: 100%;
+  @include button(white, $green);
+}
+
+.backBtn {
+  @include button(white, $green);
+}
+
+.popup {
+  @include flex(center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($dark-grey, 0.5);
+}
+
+.popupBox {
+  @include flex(center);
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  width: 30%;
+  height: 300px;
+
+  span {
+    display: inline-block;
+    font-size: 20px;
+    color: $dark-grey;
+    margin-bottom: 20px;
+  }
+}
+
+.popupBtn {
+  @include button(white, $green);
+}
+
+.popupTitle {
+  margin-bottom: 20px;
+  color: $green;
+  font-size: 23px;
+  font-weight: 700;
+}

@@ -1,0 +1,26 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.root {
+  color: $dark-grey;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  &:focus {
+    outline: 1px solid $green;
+  }
+}
+
+.error {
+  color: $red;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.inputErr {
+  outline: 1px solid $red;
+  &:focus {
+    outline: 1px solid $red;
+  }
+}

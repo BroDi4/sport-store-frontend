@@ -1,0 +1,30 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  @include flex(center);
+  flex-direction: column;
+  text-align: center;
+  margin: 20px 0;
+  height: 800px;
+  background-color: $grey;
+  border-radius: 10px;
+}
+
+.titlebox {
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $green;
+  }
+  span {
+    display: block;
+    margin: 20px;
+    font-size: 20px;
+    color: $dark-grey;
+  }
+  a {
+    display: inline-block;
+    @include button(white, $green);
+  }
+}

@@ -1,0 +1,173 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.item {
+  @include flex(space-between);
+  background-color: $grey;
+  padding: 15px 45px 15px 10px;
+  border-radius: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  @media (max-width: 769px) {
+    display: block;
+    padding: 15px 15px 15px 10px;
+  }
+}
+
+.content {
+  display: flex;
+  max-width: 100%;
+  @media (max-width: 426px) {
+    display: block;
+  }
+}
+
+.imgBox {
+  width: 20%;
+  max-height: 270px;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 1025px) {
+    width: 25%;
+  }
+  @media (max-width: 769px) {
+    width: 20%;
+    max-height: 220px;
+  }
+  @media (max-width: 426px) {
+    width: 100%;
+    height: 600px;
+    max-height: none;
+  }
+  @media (max-width: 376px) {
+    height: 450px;
+  }
+}
+
+.info {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  span {
+    color: $dark-grey;
+  }
+  @media (max-width: 426px) {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+.author {
+  font-size: 19px;
+  margin-bottom: 20px;
+  @media (max-width: 1048px) {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 40px;
+  @media (max-width: 1048px) {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+.number {
+  font-size: 15px;
+}
+
+.title {
+  color: $green;
+  align-self: start;
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  &:hover {
+    color: darken($green, 7%);
+  }
+  @include hoverLine($green);
+  @media (max-width: 1048px) {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+.right {
+  max-width: 30%;
+  position: relative;
+  @media (max-width: 769px) {
+    @include flex(space-between);
+    max-width: 100%;
+    margin-top: 15px;
+  }
+}
+
+.button {
+  margin-top: 10px;
+  @include button(white, $green);
+  width: 160px;
+  display: inline-block;
+  @media (max-width: 1048px) {
+    width: 140px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  @media (max-width: 769px) {
+    margin: 0;
+  }
+}
+
+.popup {
+  position: absolute;
+}
+
+.confButton {
+  @include button(white, darken($green, 15%));
+  width: 160px;
+  margin-top: 10px;
+  @include confButton(120%, -10%, -40px);
+  @media (max-width: 1048px) {
+    margin-top: 5px;
+    width: 140px;
+    font-size: 14px;
+  }
+  @media (max-width: 1048px) {
+    width: 150px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  @media (max-width: 769px) {
+    margin: 0;
+  }
+}
+
+.stock {
+  color: $dark-grey;
+  @media (max-width: 1048px) {
+    font-size: 16px;
+  }
+  @media (max-width: 426px) {
+    display: none;
+  }
+}
+
+.price {
+  margin: 15px 0;
+  color: $dark-grey;
+  span {
+    font-weight: 700;
+    color: $green;
+  }
+  @media (max-width: 1048px) {
+    font-size: 16px;
+  }
+}

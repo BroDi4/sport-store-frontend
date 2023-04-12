@@ -1,0 +1,73 @@
+@import './variables';
+
+@mixin button($color, $bc) {
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px 35px;
+  color: $color;
+  background-color: $bc;
+  border-radius: 10px;
+  transition: background-color linear 0.1s;
+  &:hover {
+    background-color: darken($bc, 7%);
+  }
+}
+
+@mixin confButton($width, $left, $top) {
+  display: inline-block;
+  position: relative;
+  &::before {
+    align-self: center;
+    position: absolute;
+    content: 'Перейти в корзину';
+    pointer-events: none;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    width: $width;
+    left: $left;
+    top: $top;
+    background-color: rgba($dark-grey, $alpha: 0.95);
+    padding: 10px 5px;
+    opacity: 0;
+    transition: all linear 0.1s;
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+@mixin flex($jc) {
+  display: flex;
+  align-items: center;
+  justify-content: $jc;
+}
+
+@mixin title($color, $fz) {
+  color: $color;
+  font-size: $fz;
+  font-weight: 700;
+}
+
+@mixin hoverLine($color) {
+  position: relative;
+  &:hover {
+    color: darken($color, 5%);
+    &::after {
+      top: 120%;
+      opacity: 1;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 150%;
+    border-bottom: 1px solid $color;
+    opacity: 0;
+    transition: all ease 0.2s;
+  }
+}
