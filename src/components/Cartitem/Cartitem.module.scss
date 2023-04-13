@@ -37,24 +37,55 @@
   margin: 5px 10px;
   a {
     display: block;
-    color: $green;
+    color: $blue;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
-    @include hoverLine($green);
+    @include hoverLine($blue);
   }
-  span {
-    color: $dark-grey;
+  p {
     font-size: 17px;
+    color: $dark-grey;
   }
   @media (max-width: 375px) {
     a {
       font-size: 17px;
     }
-    span {
+    p {
       font-size: 15px;
     }
   }
+}
+
+.colorBox {
+  margin-top: 10px;
+  @include flex(flex-start);
+  div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $dark-grey;
+    border-radius: 20px;
+    margin-left: 10px;
+  }
+  p {
+    display: block;
+  }
+}
+
+.red {
+  background-color: $red;
+}
+
+.white {
+  background-color: white;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.black {
+  background-color: black;
 }
 
 .btns {
@@ -70,13 +101,13 @@
   right: 10px;
   bottom: 10px;
   padding: 7px;
-  border: 1px solid $green;
+  border: 1px solid $blue;
   border-radius: 10px;
   cursor: pointer;
   transition: all linear 0.1s;
-  background-color: $green;
+  background-color: $blue;
   &:hover {
-    background-color: darken($green, 7%);
+    background-color: darken($blue, 7%);
   }
   img {
     width: 20px;

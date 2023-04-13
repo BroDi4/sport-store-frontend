@@ -7,10 +7,23 @@
   padding: 10px 35px;
   color: $color;
   background-color: $bc;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: background-color linear 0.1s;
   &:hover {
     background-color: darken($bc, 7%);
+  }
+}
+
+@mixin bglessButton($bc, $hover) {
+  border: 1px solid rgba($dark-grey, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 0;
+  width: 80px;
+  margin-bottom: 10px;
+  &:hover {
+    border: 1px solid $blue;
   }
 }
 

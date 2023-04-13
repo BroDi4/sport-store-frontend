@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './Productcard.module.scss';
+import SizeBlock from '../SizeBlock/SizeBlock';
+import ColorBlock from '../ColorBlock/ColorBlock';
 import { Context } from '../../App';
 
 const Productcard = () => {
@@ -9,6 +11,8 @@ const Productcard = () => {
   const [product, setProduct] = useState({});
   const { cart, setCart } = useContext(Context);
   const navigate = useNavigate();
+  const [activeSize, setActiveSize] = useState(0);
+  const [activeColor, setActiveColor] = useState(0);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -28,51 +32,77 @@ const Productcard = () => {
         Назад
       </Link>
 
-      <div className={styles.root}>
-        <div className={styles.header}>
-          <div className={styles.imgBox}>
-            <img src={product.imgUrl} alt="" />
-          </div>
-          <div className={styles.titleBox}>
-            <h2 className={styles.title}>{product.title}</h2>
-            <div className={styles.names}>
-              <p>Автор: </p>
-              <p>Количество страниц: </p>
-              <p>Вес: </p>
-              <p>Год издания: </p>
-              <p>Код: </p>
+      {product._id && (
+        <div className={styles.root}>
+          <div className={styles.header}>
+            <div className={styles.imgBox}>
+              <img src={product.imgUrl} alt="" />
             </div>
-            <div className={styles.values}>
-              <p>{product.author}</p>
-              <p>{product.pages}</p>
-              <p>{product.weight} g</p>
-              <p>{product.year}</p>
-              <p>{product.code}</p>
+            <div className={styles.titleBox}>
+              <h2 className={styles.title}>{product.title}</h2>
+              <h3>Общая характеристика</h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Пол: </td>
+                    <td>{product.gender === 'male' ? 'мужской' : 'женский'}</td>
+                  </tr>
+                  <tr>
+                    <td>Материал: </td>
+                    <td>{product.material}</td>
+                  </tr>
+                  <tr>
+                    <td>Код продукта: </td>
+                    <td>{product.code}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className={styles.priceBox}>
+              <p className={styles.name}>Размеры: </p>
+              <SizeBlock
+                sizes={product.sizes}
+                activeSize={activeSize}
+                setActiveSize={setActiveSize}
+              />
+              <p lassName={styles.name}>Цвет:</p>
+              <ColorBlock
+                colors={product.colors}
+                activeColor={activeColor}
+                setActiveColor={setActiveColor}
+              />
+
+              <p className={styles.price}>Цена: {product.price} ₽</p>
+              {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
+                <button
+                  className={styles.btn}
+                  onClick={() =>
+                    setCart([
+                      ...cart,
+                      {
+                        ...product,
+                        count: 1,
+                        priceFinal: product.price,
+                        currSize: product.sizes[activeSize],
+                        currColor: product.colors[activeColor],
+                      },
+                    ])
+                  }>
+                  Купить
+                </button>
+              ) : (
+                <Link className={styles.confButton} to="/cart">
+                  В корзине
+                </Link>
+              )}
             </div>
           </div>
-          <div className={styles.priceBox}>
-            <p>В наличии: {product.stock}</p>
-            <p>Цена: {product.price} ₽</p>
-            {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
-              <button
-                className={styles.btn}
-                onClick={() =>
-                  setCart([...cart, { ...product, count: 1, priceFinal: product.price }])
-                }>
-                Купить
-              </button>
-            ) : (
-              <Link className={styles.confButton} to="/cart">
-                В корзине
-              </Link>
-            )}
+          <div className={styles.description}>
+            <h3>Описание</h3>
+            <div className={styles.descBody}>{product.description}</div>
           </div>
         </div>
-        <div className={styles.description}>
-          <h3>Описание</h3>
-          <div className={styles.descBody}>{product.descriptionFull}</div>
-        </div>
-      </div>
+      )}
     </>
   );
 };

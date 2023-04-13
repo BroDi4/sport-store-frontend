@@ -19,8 +19,8 @@
 
 .active {
   color: white;
-  background-color: $green;
+  background-color: $blue;
   &:hover {
-    background-color: darken($green, 7%);
+    background-color: darken($blue, 7%);
   }
 }

@@ -7,7 +7,7 @@
 }
 
 .title {
-  color: $green;
+  color: $blue;
   font-size: 20px;
   font-weight: 700;
   @media (max-width: 375px) {
@@ -22,7 +22,7 @@
 .btn {
   display: flex;
   align-items: center;
-  @include button(white, $green);
+  @include button(white, $blue);
   padding: 15px 20px 15px 0;
   span {
     min-width: 45px;

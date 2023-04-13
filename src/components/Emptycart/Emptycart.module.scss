@@ -15,7 +15,7 @@
   h1 {
     font-size: 32px;
     font-weight: 700;
-    color: $green;
+    color: $blue;
   }
   span {
     display: block;
@@ -25,6 +25,6 @@
   }
   a {
     display: inline-block;
-    @include button(white, $green);
+    @include button(white, $blue);
   }
 }

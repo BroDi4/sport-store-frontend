@@ -26,7 +26,7 @@
 .title {
   font-size: 20px;
   font-weight: 700;
-  color: $green;
+  color: $blue;
 }
 
 .price {
@@ -35,5 +35,5 @@
 
 .btn {
   display: block;
-  @include button(white, $green);
+  @include button(white, $blue);
 }

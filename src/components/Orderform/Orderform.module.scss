@@ -10,7 +10,7 @@
 }
 
 .title {
-  @include title($green, 28px);
+  @include title($blue, 28px);
   text-align: center;
 }
 
@@ -27,7 +27,7 @@
   background-color: white;
   border-radius: 10px;
   &:focus {
-    outline: 1px solid $green;
+    outline: 1px solid $blue;
   }
 }
 
@@ -61,11 +61,11 @@
 .btn {
   margin-top: 40px;
   width: 100%;
-  @include button(white, $green);
+  @include button(white, $blue);
 }
 
 .backBtn {
-  @include button(white, $green);
+  @include button(white, $blue);
 }
 
 .popup {
@@ -96,12 +96,12 @@
 }
 
 .popupBtn {
-  @include button(white, $green);
+  @include button(white, $blue);
 }
 
 .popupTitle {
   margin-bottom: 20px;
-  color: $green;
+  color: $blue;
   font-size: 23px;
   font-weight: 700;
 }

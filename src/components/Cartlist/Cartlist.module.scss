@@ -22,10 +22,10 @@
 .delcart {
   cursor: pointer;
   display: inline-block;
-  color: $green;
+  color: $blue;
   font-weight: 700;
   transition: color linear 0.2s;
-  @include hoverLine($green);
+  @include hoverLine($blue);
   @media (max-width: 375px) {
     margin: 10px 0;
   }

@@ -12,7 +12,7 @@ const Header = () => {
     <div className={styles.header}>
       <div className={[styles.inner, 'container'].join(' ')}>
         <Link to={'/'}>
-          <div className={styles.title}>📗 Read&Book</div>
+          <div className={styles.title}>Sport&Clothes</div>
         </Link>
         <Link to={'/cart'}>
           <div className={styles.btn}>

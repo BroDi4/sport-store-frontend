@@ -3,7 +3,7 @@
 
 .counter {
   max-width: 110px;
-  border: 1px solid $green;
+  border: 1px solid $blue;
   @include flex(space-between);
   flex-shrink: 0;
   background-color: white;

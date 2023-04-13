@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import SearchBlock from '../components/SearchBlock/SearchBlock';
 import Filter from '../components/Filter/Filter';
-import Booklist from '../components/Booklist/Booklist';
+import Booklist from '../components/Itemlist/Itemlist';
 
 const Home = () => {
   const [products, setProducts] = useState([]);

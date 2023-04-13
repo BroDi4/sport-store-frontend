@@ -12,10 +12,10 @@ import Order from './pages/Order';
 export const Context = createContext();
 
 function App() {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart') || []));
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('sportcart') || []));
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('sportcart', JSON.stringify(cart));
   }, [cart]);
 
   return (

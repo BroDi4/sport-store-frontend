@@ -11,8 +11,6 @@ const SearchBlock = ({ sortValue, onClickSort, searchValue, onChangeSearch }) =>
     { name: 'По цене ⬆', tag: '-price' },
     { name: 'По названию ⬇', tag: 'title' },
     { name: 'По названию ⬆', tag: '-title' },
-    { name: 'По автору ⬇', tag: 'author' },
-    { name: 'По автору ⬆', tag: '-author' },
   ];
 
   const selectSort = (obj) => {

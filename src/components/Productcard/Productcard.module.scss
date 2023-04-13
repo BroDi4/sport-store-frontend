@@ -17,7 +17,7 @@
 
 .backBtn {
   display: inline-block;
-  @include button(white, $green);
+  @include button(white, $blue);
   margin-top: 15px;
   @media (max-width: 425px) {
     margin-top: 10px;
@@ -30,7 +30,7 @@
     'img title'
     'img price';
   grid-template-columns: 340px 1fr;
-  grid-auto-rows: minmax(0, 210px);
+  grid-auto-rows: minmax(0, 240px);
   grid-column-gap: 30px;
   margin-bottom: 20px;
   @media (max-width: 969px) {
@@ -62,45 +62,30 @@
 
 .titleBox {
   grid-area: title;
-  display: grid;
-  grid-template-areas:
-    'name name'
-    'names values';
-  grid-template-columns: 45% 1fr;
-  column-gap: 10px;
-  p {
-    font-size: 21px;
+  h3 {
+    width: 100%;
+    font-size: 20px;
     color: $dark-grey;
-    &:not(:last-child) {
-      margin-bottom: 8px;
-    }
+    margin-bottom: 5px;
+    font-weight: 700;
   }
-  @media (max-width: 980px) {
-    grid-template-columns: 60% 1fr;
-    p {
-      font-size: 17px;
-    }
-  }
-  @media (max-width: 769px) {
-    margin: 20px 0;
-  }
-  @media (max-width: 425px) {
-    p {
-      font-size: 14px;
-    }
-  }
-  @media (max-width: 350px) {
-    p {
-      font-size: 12px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+
+    td {
+      border-bottom: 1px solid rgba($dark-grey, 0.4);
+      padding: 12px;
     }
   }
 }
 
 .title {
   align-self: center;
-  @include title($green, 30px);
+  @include title($blue, 30px);
   grid-area: name;
-  margin-bottom: 10px;
+  margin: 10px 0;
   @media (max-width: 980px) {
     font-size: 25px;
   }
@@ -127,11 +112,6 @@
   background-color: white;
   border-radius: 10px;
   padding: 25px 30px;
-  p {
-    font-size: 20px;
-    color: $dark-grey;
-    margin-bottom: 25px;
-  }
   @media (max-width: 425px) {
     padding: 15px;
     p {
@@ -140,8 +120,18 @@
   }
 }
 
+.name {
+  font-size: 20px;
+  color: $dark-grey;
+  margin-bottom: 5px;
+}
+
+.price {
+  margin: 15px 0;
+}
+
 .btn {
-  @include button(white, $green);
+  @include button(white, $blue);
   font-size: 19px;
   padding: 10px 100px;
   display: inline-block;
@@ -156,7 +146,7 @@
 }
 
 .confButton {
-  @include button(white, darken($green, 15%));
+  @include button(white, darken($blue, 15%));
   padding: 10px 100px;
   display: inline-block;
   align-self: start;

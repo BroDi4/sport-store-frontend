@@ -11,13 +11,13 @@
 
   span {
     font-size: 35px;
-    color: $green;
+    color: $blue;
     font-weight: 700;
     margin-bottom: 30px;
   }
 
   a {
-    @include button(white, $green);
+    @include button(white, $blue);
     font-size: 20px;
   }
 }

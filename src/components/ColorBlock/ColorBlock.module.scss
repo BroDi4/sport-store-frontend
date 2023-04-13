@@ -1,0 +1,38 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.colors {
+  @include flex(flex-start);
+  li {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &:hover {
+      border: 1px solid $blue;
+    }
+  }
+}
+
+.active {
+  border: 2px solid $blue !important;
+}
+
+.red {
+  background-color: $red;
+}
+
+.white {
+  background-color: white;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.black {
+  background-color: black;
+}

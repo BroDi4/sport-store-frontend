@@ -1,0 +1,25 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: $dark-grey;
+    margin-bottom: 10px;
+  }
+}
+
+.itemlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 40px;
+  }
+  @media (max-width: 769px) {
+    grid-template-columns: 1fr;
+  }
+}

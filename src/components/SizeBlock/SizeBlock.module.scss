@@ -1,0 +1,17 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.sizes {
+  @include flex(flex-start);
+  flex-wrap: wrap;
+  li {
+    @include bglessButton($dark-grey, $blue);
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.active {
+  border: 1px solid $blue !important;
+}
