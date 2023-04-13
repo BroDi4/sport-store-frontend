@@ -1,11 +1,35 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Cartsidebar.module.scss';
 import { Context } from '../../App';
 
 const CartSidebar = () => {
-  const { cart } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
+  const navigate = useNavigate();
+
+  const onSubmit = () => {
+    const params = { orders: [...cart] };
+    fetch('http://localhost:4000/order', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.id) {
+          setCart([]);
+          alert('Заказ оформлен!');
+          navigate('/');
+        } else {
+          alert('Не удалось оформить заказ!');
+        }
+      });
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.inner}>
@@ -18,9 +42,9 @@ const CartSidebar = () => {
           <div className={styles.price}>{cart.reduce((sum, obj) => sum + obj.priceFinal, 0)}₽</div>
         </div>
       </div>
-      <Link to={'/order'} className={styles.btn}>
+      <button onClick={() => onSubmit()} to={'/order'} className={styles.btn}>
         Оформить заказ
-      </Link>
+      </button>
     </div>
   );
 };

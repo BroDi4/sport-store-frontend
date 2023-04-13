@@ -24,12 +24,40 @@
   align-items: center;
   @include button(white, $blue);
   padding: 15px 20px 15px 0;
+  margin-right: 10px;
   span {
     min-width: 45px;
   }
   @media (max-width: 375px) {
     padding: 10px;
   }
+}
+
+.btns {
+  @include flex(flex-start);
+}
+
+.logoutBtn {
+  @include button(white, $red);
+  height: 54px;
+  padding: 15px;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.linkBtn {
+  @include button(white, $blue);
+  border: 1px solid $blue;
+  margin-right: 10px;
+  padding: 15px 30px;
+}
+
+.regLinkBtn {
+  @include button($blue, $grey);
+  border: 1px solid rgba($dark-grey, 0.5);
+  padding: 15px 30px;
 }
 
 .imgbox {

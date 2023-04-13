@@ -15,7 +15,7 @@
 }
 
 @mixin bglessButton($bc, $hover) {
-  border: 1px solid rgba($dark-grey, 0.3);
+  border: 1px solid rgba($bc, 0.3);
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
@@ -23,7 +23,7 @@
   width: 80px;
   margin-bottom: 10px;
   &:hover {
-    border: 1px solid $blue;
+    border: 1px solid $hover;
   }
 }
 

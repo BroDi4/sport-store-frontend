@@ -35,5 +35,6 @@
 
 .btn {
   display: block;
+  width: 100%;
   @include button(white, $blue);
 }

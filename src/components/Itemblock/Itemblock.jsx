@@ -7,7 +7,7 @@ import ColorBlock from '../ColorBlock/ColorBlock';
 import { Context } from '../../App';
 
 const Itemblock = (props) => {
-  const { cart, setCart } = useContext(Context);
+  const { cart, setCart, isAuth } = useContext(Context);
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
 
@@ -29,22 +29,28 @@ const Itemblock = (props) => {
         />
       </div>
       {cart.findIndex((item) => item._id === props._id) === -1 ? (
-        <button
-          onClick={() =>
-            setCart([
-              ...cart,
-              {
-                ...props,
-                priceFinal: props.price,
-                currSize: props.sizes[activeSize],
-                currColor: props.colors[activeColor],
-                count: 1,
-              },
-            ])
-          }
-          className={styles.btn}>
-          В корзину
-        </button>
+        isAuth ? (
+          <button
+            onClick={() =>
+              setCart([
+                ...cart,
+                {
+                  ...props,
+                  priceFinal: props.price,
+                  currSize: props.sizes[activeSize],
+                  currColor: props.colors[activeColor],
+                  count: 1,
+                },
+              ])
+            }
+            className={styles.btn}>
+            В корзину
+          </button>
+        ) : (
+          <Link className={styles.btn} to={'/login'}>
+            В корзину
+          </Link>
+        )
       ) : (
         <Link className={[styles.btn, styles.confBtn].join(' ')} to={'/cart'}>
           В корзине

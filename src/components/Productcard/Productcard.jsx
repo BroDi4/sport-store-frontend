@@ -9,7 +9,7 @@ import { Context } from '../../App';
 const Productcard = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const { cart, setCart } = useContext(Context);
+  const { cart, setCart, isAuth } = useContext(Context);
   const navigate = useNavigate();
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
@@ -74,22 +74,28 @@ const Productcard = () => {
 
               <p className={styles.price}>Цена: {product.price} ₽</p>
               {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
-                <button
-                  className={styles.btn}
-                  onClick={() =>
-                    setCart([
-                      ...cart,
-                      {
-                        ...product,
-                        count: 1,
-                        priceFinal: product.price,
-                        currSize: product.sizes[activeSize],
-                        currColor: product.colors[activeColor],
-                      },
-                    ])
-                  }>
-                  Купить
-                </button>
+                isAuth ? (
+                  <button
+                    className={styles.btn}
+                    onClick={() =>
+                      setCart([
+                        ...cart,
+                        {
+                          ...product,
+                          count: 1,
+                          priceFinal: product.price,
+                          currSize: product.sizes[activeSize],
+                          currColor: product.colors[activeColor],
+                        },
+                      ])
+                    }>
+                    Купить
+                  </button>
+                ) : (
+                  <Link className={styles.btn} to={'/login'}>
+                    Купить
+                  </Link>
+                )
               ) : (
                 <Link className={styles.confButton} to="/cart">
                   В корзине
