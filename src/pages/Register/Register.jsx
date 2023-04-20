@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -8,7 +8,6 @@ import { Context } from '../../App';
 
 const Register = () => {
   const { isAuth, setIsAuth } = useContext(Context);
-  const [formErrors, setFormErrors] = useState([]);
   const {
     register,
     handleSubmit,

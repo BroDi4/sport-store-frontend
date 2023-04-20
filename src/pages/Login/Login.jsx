@@ -46,12 +46,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <div className={styles.btnBox}>
-        <Link to="/cart" className={styles.backBtn}>
-          Назад
-        </Link>
-      </div> */}
-
       <form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
         <h2 className={styles.title}>Войти в аккаунт</h2>
         <div className={styles.inputBox}>
