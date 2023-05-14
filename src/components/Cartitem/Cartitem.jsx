@@ -6,7 +6,7 @@ import delIcon from '../../assets/img/delete.svg';
 import { Context } from '../../App';
 import { Link } from 'react-router-dom';
 
-const CartItem = ({ _id, title, price, currSize, currColor, imgUrl, count, stock, priceFinal }) => {
+const CartItem = ({ _id, title, price, currSize, currColor, imgUrl, count, priceFinal }) => {
   const { cart, setCart } = useContext(Context);
 
   const handleCartChange = (value) => {
@@ -35,7 +35,7 @@ const CartItem = ({ _id, title, price, currSize, currColor, imgUrl, count, stock
         </div>
       </div>
       <div className={styles.btns}>
-        <Counter count={count} onChange={handleCartChange} stock={stock} />
+        <Counter count={count} onChange={handleCartChange} />
         <div className={styles.price}>{priceFinal} ₽</div>
       </div>
       <div onClick={() => setCart(cart.filter((obj) => obj._id !== _id))} className={styles.del}>

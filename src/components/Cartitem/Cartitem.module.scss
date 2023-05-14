@@ -5,11 +5,9 @@
   @include flex(space-between);
   align-items: flex-start;
   position: relative;
-  background-color: $grey;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 20px 0;
   &:not(:last-child) {
-    margin-bottom: 15px;
+    border-bottom: 1px solid rgba($dark-grey, 0.4);
   }
   @media (max-width: 590px) {
     display: block;
@@ -99,7 +97,7 @@
 .del {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  bottom: 20px;
   padding: 7px;
   border: 1px solid $blue;
   border-radius: 10px;

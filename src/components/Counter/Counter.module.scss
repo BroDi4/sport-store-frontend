@@ -3,12 +3,13 @@
 
 .counter {
   max-width: 110px;
-  border: 1px solid $blue;
+  // border: 1px solid $blue;
   @include flex(space-between);
   flex-shrink: 0;
   background-color: white;
+
   button {
-    @include button($dark-grey, white);
+    @include button(white, $blue);
     border-radius: 0;
     text-align: center;
     padding: 7px 10px;
@@ -24,11 +25,14 @@
 .count {
   text-align: center;
   color: $dark-grey;
-  padding: 7px;
+  padding: 6px;
   height: 100%;
   width: 100%;
   font-size: 18px;
   appearance: textfield;
+  &:focus {
+    outline: 1px solid $blue;
+  }
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;

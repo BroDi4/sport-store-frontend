@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      console.log('отработал');
       fetch('http://localhost:4000/auth', {
         method: 'get',
         headers: {
