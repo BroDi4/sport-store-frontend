@@ -1,0 +1,60 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  padding: 50px;
+  margin-top: 80px;
+  background-color: $grey;
+
+  color: $dark-grey;
+  font-size: 19px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.number {
+  color: $blue;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+.mail {
+  font-size: 21px;
+  margin-bottom: 50px;
+}
+
+.links {
+  @include flex(flex-start);
+  a {
+    margin-right: 15px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: bold;
+  color: $blue;
+  margin-bottom: 15px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  li {
+    cursor: pointer;
+    align-self: start;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    @include hoverLine($blue);
+  }
+}

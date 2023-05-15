@@ -7,10 +7,10 @@ import arrowimg from '../../assets/img/arrow.svg';
 const SearchBlock = ({ sortValue, onClickSort, searchValue, onChangeSearch }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const sortMethdos = [
-    { name: 'По цене ⬇', tag: 'price' },
-    { name: 'По цене ⬆', tag: '-price' },
-    { name: 'По названию ⬇', tag: 'title' },
-    { name: 'По названию ⬆', tag: '-title' },
+    { name: 'По возрастанию цены', tag: 'price' },
+    { name: 'По убыванию цены', tag: '-price' },
+    { name: 'По названию', tag: 'title' },
+    // { name: 'По названию', tag: '-title' },
   ];
 
   const selectSort = (obj) => {

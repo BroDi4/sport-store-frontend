@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import styles from './Filter.module.scss';
+import { Context } from '../../App';
 
 const Filter = ({ value, onClickCategory }) => {
-  const [filter, setFilter] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:4000/categories')
-      .then((res) => res.json())
-      .then((arr) => setFilter([{ name: 'Все', tag: 'all' }, ...arr]))
-      .catch((err) => console.log(err));
-  }, []);
+  const { filter } = useContext(Context);
 
   return (
     <div className={styles.filterbox}>

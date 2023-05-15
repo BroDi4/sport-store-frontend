@@ -6,7 +6,8 @@
 }
 
 .inner {
-  background-color: $grey;
+  // background-color: $grey;
+  border: 1px solid rgba($dark-grey, 0.3);
   border-radius: 10px;
   padding: 50px 30px;
   margin-bottom: 10px;

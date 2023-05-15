@@ -6,6 +6,8 @@
   flex-wrap: wrap;
   li {
     @include bglessButton($dark-grey, $blue);
+    padding: 5px 0;
+    width: 80px;
     &:not(:last-child) {
       margin-right: 10px;
     }

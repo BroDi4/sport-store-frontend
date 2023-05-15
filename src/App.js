@@ -9,16 +9,26 @@ import Product from './pages/Product';
 import Login from './pages/Login/Login';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Register from './pages/Register/Register';
+import Footer from './components/Footer/Footer';
 
 export const Context = createContext();
 
 function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('sportcart') || []));
   const [isAuth, setIsAuth] = useState(false);
+  const [filter, setFilter] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
     localStorage.setItem('sportcart', JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/categories')
+      .then((res) => res.json())
+      .then((arr) => setFilter([{ name: 'Все', tag: 'all' }, ...arr]))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -40,7 +50,8 @@ function App() {
 
   return (
     <>
-      <Context.Provider value={{ cart, setCart, isAuth, setIsAuth }}>
+      <Context.Provider
+        value={{ cart, setCart, isAuth, setIsAuth, filter, activeCategory, setActiveCategory }}>
         <Header />
         <div className="container">
           <Routes>
@@ -52,6 +63,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
+        <Footer />
       </Context.Provider>
     </>
   );

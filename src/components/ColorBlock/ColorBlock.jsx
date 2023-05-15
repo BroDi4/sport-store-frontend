@@ -11,9 +11,9 @@ const ColorBlock = ({ colors, activeColor, setActiveColor }) => {
             <li
               key={i}
               onClick={() => setActiveColor(i)}
-              className={[styles[`${item}`], activeColor === i ? styles.active : ''].join(
-                ' ',
-              )}></li>
+              className={[styles.colorItem, activeColor === i ? styles.active : ''].join(' ')}>
+              <div className={styles[`${item}`]}></div>
+            </li>
           );
         })}
       </ul>

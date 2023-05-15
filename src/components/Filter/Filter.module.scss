@@ -8,9 +8,11 @@
 }
 
 .item {
-  @include button($dark-grey, $grey);
+  @include bglessButton($dark-grey, $blue);
+  padding: 10px 20px;
   font-size: 16px;
   font-weight: 700;
+  color: $dark-grey;
   margin-bottom: 10px;
   &:not(:last-child) {
     margin-right: 15px;

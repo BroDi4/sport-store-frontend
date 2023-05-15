@@ -20,7 +20,7 @@ const Counter = ({ count, onChange, stock }) => {
         value={count}
         className={styles.count}
       />
-      <button onClick={() => onChange(count + 1)} className={count}>
+      <button onClick={() => onChange(count + 1)} className={count === 50 ? styles.disbtn : ''}>
         +
       </button>
     </div>

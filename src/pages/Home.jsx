@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import SearchBlock from '../components/SearchBlock/SearchBlock';
 import Filter from '../components/Filter/Filter';
 import Booklist from '../components/Itemlist/Itemlist';
+import { Context } from '../App';
 
 const Home = () => {
+  const { activeCategory, setActiveCategory } = useContext(Context);
   const [products, setProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedSort, setSelectedSort] = useState({ name: 'По цене ⬇', tag: 'price' });
+  const [selectedSort, setSelectedSort] = useState({ name: 'По возрастанию цены', tag: 'price' });
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {

@@ -7,7 +7,7 @@
   position: relative;
   padding: 20px 0;
   &:not(:last-child) {
-    border-bottom: 1px solid rgba($dark-grey, 0.4);
+    border-bottom: 1px solid rgba($dark-grey, 0.3);
   }
   @media (max-width: 590px) {
     display: block;
