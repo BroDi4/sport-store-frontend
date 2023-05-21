@@ -7,6 +7,10 @@
   transition: all ease-in-out 0.1s;
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   color: $blue;
   font-size: 20px;
@@ -21,17 +25,27 @@
 }
 
 .btn {
-  display: flex;
-  align-items: center;
+  position: relative;
   @include button(white, $blue);
-  padding: 10px 20px 10px 0;
-  margin-right: 10px;
-  span {
-    min-width: 45px;
+  @include flex(center);
+  flex-direction: column;
+  align-items: center;
+  height: 45px;
+  padding: 0 15px;
+  img {
+    width: 20px;
+    height: 20px;
   }
-  @media (max-width: 375px) {
-    padding: 10px;
-  }
+  margin-right: 15px;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.count {
+  @include productCount;
 }
 
 .btns {
@@ -40,7 +54,7 @@
 
 .logoutBtn {
   @include button(white, $red);
-  height: 44px;
+  height: 45px;
   padding: 10px;
   img {
     width: 25px;

@@ -1,0 +1,69 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  padding: 15px 0;
+  display: flex;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba($dark-grey, 0.3);
+  }
+  @media (max-width: 526px) {
+    display: block;
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  @include flex(space-between);
+  @media (max-width: 769px) {
+    display: block;
+  }
+}
+
+.imgbox {
+  width: 120px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 769px) {
+    width: 300px;
+  }
+  @media (max-width: 526px) {
+    width: 100%;
+  }
+}
+.info {
+  padding: 15px;
+  width: 65%;
+  @media (max-width: 769px) {
+    width: 100%;
+  }
+}
+
+.title {
+  display: inline-block;
+  color: $blue;
+  font-weight: bold;
+  @include hoverLine($blue);
+  margin-bottom: 10px;
+}
+
+.priceblock {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  @media (max-width: 769px) {
+    padding: 15px;
+    width: 100%;
+    display: block;
+  }
+}
+
+.price {
+  align-self: flex-end;
+  color: $dark-grey;
+  font-size: 21px;
+  margin-bottom: 40px;
+}

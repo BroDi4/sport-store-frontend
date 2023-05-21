@@ -7,7 +7,7 @@ import { Context } from '../../App';
 import Input from '../../components/UI/Input/Input';
 
 const Login = () => {
-  const { isAuth, setIsAuth } = useContext(Context);
+  const { isAuth, setIsAuth, setCart } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -37,6 +37,7 @@ const Login = () => {
       .then((result) => {
         if (result._id) {
           setIsAuth(true);
+          setCart(result.cart);
           localStorage.setItem('token', JSON.stringify(result.token));
         } else {
           alert('Не удалось авторизироваться, проверьте логин и пароль');

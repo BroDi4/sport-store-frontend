@@ -1,0 +1,38 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.btns {
+  @include flex(space-between);
+}
+
+.favoriteBtn {
+  @include flex(center);
+  @include bglessButton($dark-grey, $blue);
+  width: 15%;
+  height: 40px;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.confFavorite {
+  border: 1px solid $blue;
+  @include confButton(400%, -140%, -50px, 'Убрать из избранного');
+  svg {
+    fill: $blue;
+  }
+}
+
+.btn {
+  display: block;
+  width: 80%;
+  line-height: 120%;
+  height: 40px;
+  @include button(white, $blue);
+}
+
+.confBtn {
+  background-color: darken($blue, 20%);
+  @include confButton(110%, -5%, -50px, 'Перейти в корзину');
+}

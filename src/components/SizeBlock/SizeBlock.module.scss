@@ -7,6 +7,7 @@
   li {
     @include bglessButton($dark-grey, $blue);
     padding: 5px 0;
+    margin-bottom: 10px;
     width: 80px;
     &:not(:last-child) {
       margin-right: 10px;

@@ -9,19 +9,17 @@ import Product from './pages/Product';
 import Login from './pages/Login/Login';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Register from './pages/Register/Register';
+import Favorite from './pages/Favorite';
 import Footer from './components/Footer/Footer';
 
 export const Context = createContext();
 
 function App() {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('sportcart') || []));
+  const [cart, setCart] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [filter, setFilter] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
-
-  useEffect(() => {
-    localStorage.setItem('sportcart', JSON.stringify(cart));
-  }, [cart]);
 
   useEffect(() => {
     fetch('http://localhost:4000/categories')
@@ -32,7 +30,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      fetch('http://localhost:4000/auth', {
+      fetch('http://localhost:4000/user', {
         method: 'get',
         headers: {
           'Content-type': 'application/json',
@@ -41,6 +39,8 @@ function App() {
       })
         .then((res) => res.json())
         .then((result) => {
+          setCart(result.cart);
+          setFavorite(result.favorites);
           if (!result.msg) {
             setIsAuth(true);
           }
@@ -48,15 +48,43 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const data = {
+      cart: cart,
+      favorites: favorite,
+    };
+    fetch('http://localhost:4000/user', {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+  }, [cart, favorite]);
+
   return (
     <>
       <Context.Provider
-        value={{ cart, setCart, isAuth, setIsAuth, filter, activeCategory, setActiveCategory }}>
+        value={{
+          cart,
+          setCart,
+          isAuth,
+          setIsAuth,
+          filter,
+          activeCategory,
+          setActiveCategory,
+          favorite,
+          setFavorite,
+        }}>
         <Header />
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/favorite" element={<Favorite />} />
             <Route path="/products/:id" element={<Product />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

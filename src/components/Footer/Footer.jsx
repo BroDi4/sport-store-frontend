@@ -26,7 +26,7 @@ const Footer = () => {
     <div className={styles.root}>
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.item}>
+          <div className={[styles.item, styles.numberblock].join(' ')}>
             <span className={styles.number}>+7 (800) 000-00-00</span>
             <span className={styles.mail}>sportclothes@mail.ru</span>
             <div className={styles.links}>
@@ -35,7 +35,7 @@ const Footer = () => {
               <SocialLink img={youtubeLogo} link={'/'} />
             </div>
           </div>
-          <div className={styles.item}>
+          <div className={[styles.item, styles.catalogblock].join(' ')}>
             <h2 className={styles.title}>Каталог</h2>
             <ul className={styles.list}>
               {filter.map((obj) => {
@@ -50,7 +50,7 @@ const Footer = () => {
               })}
             </ul>
           </div>
-          <div className={styles.item}>
+          <div className={[styles.item, styles.infoblock].join(' ')}>
             <h2 className={styles.title}>Информация</h2>
             <ul className={styles.list}>
               <li>Политика</li>

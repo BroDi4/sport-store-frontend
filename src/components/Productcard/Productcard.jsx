@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
 import styles from './Productcard.module.scss';
 import SizeBlock from '../SizeBlock/SizeBlock';
 import ColorBlock from '../ColorBlock/ColorBlock';
-import { Context } from '../../App';
+import BuyBlock from '../BuyBlock/BuyBlock';
 
 const Productcard = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const { cart, setCart, isAuth } = useContext(Context);
-  const navigate = useNavigate();
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
 
@@ -19,7 +17,7 @@ const Productcard = () => {
       let product = await fetch(`http://localhost:4000/products/${id}`);
       product = await product.json();
       if (product.error) {
-        navigate('/notfound');
+        return <Navigate to={'/notfound'} />;
       }
       setProduct(product);
     };
@@ -65,15 +63,18 @@ const Productcard = () => {
                 activeSize={activeSize}
                 setActiveSize={setActiveSize}
               />
-              <p lassName={styles.name}>Цвет:</p>
+              <p className={styles.name}>Цвет:</p>
               <ColorBlock
                 colors={product.colors}
                 activeColor={activeColor}
                 setActiveColor={setActiveColor}
               />
 
-              <p className={styles.price}>Цена: {product.price} ₽</p>
-              {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
+              <p className={styles.price}>
+                Цена: <span>{product.price} ₽</span>
+              </p>
+              <BuyBlock params={product} activeSize={activeSize} activeColor={activeColor} />
+              {/* {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
                 isAuth ? (
                   <button
                     className={styles.btn}
@@ -100,7 +101,7 @@ const Productcard = () => {
                 <Link className={styles.confButton} to="/cart">
                   В корзине
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
           <div className={styles.description}>

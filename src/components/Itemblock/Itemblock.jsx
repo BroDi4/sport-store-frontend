@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import styles from './Itemblock.module.scss';
 import SizeBlock from '../SizeBlock/SizeBlock';
 import ColorBlock from '../ColorBlock/ColorBlock';
-import { Context } from '../../App';
+import BuyBlock from '../BuyBlock/BuyBlock';
 
 const Itemblock = (props) => {
-  const { cart, setCart, isAuth } = useContext(Context);
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
 
@@ -28,24 +27,35 @@ const Itemblock = (props) => {
           setActiveColor={setActiveColor}
         />
       </div>
-      {cart.findIndex((item) => item._id === props._id) === -1 ? (
+
+      <BuyBlock params={props} activeColor={activeColor} activeSize={activeSize} />
+      {/* {cart.findIndex((item) => item._id === props._id) === -1 ? (
         isAuth ? (
-          <button
-            onClick={() =>
-              setCart([
-                ...cart,
-                {
-                  ...props,
-                  priceFinal: props.price,
-                  currSize: props.sizes[activeSize],
-                  currColor: props.colors[activeColor],
-                  count: 1,
-                },
-              ])
-            }
-            className={styles.btn}>
-            В корзину
-          </button>
+          <>
+            <button className={styles.favoriteBtn}>
+              <img src={favoriteLogo} alt="" />
+            </button>
+            <button
+              onClick={() =>
+                setCart([
+                  ...cart,
+                  {
+                    _id: props._id,
+                    title: props.title,
+                    imgUrl: props.imgUrl,
+                    code: props.code,
+                    price: props.price,
+                    priceFinal: props.price,
+                    currSize: props.sizes[activeSize],
+                    currColor: props.colors[activeColor],
+                    count: 1,
+                  },
+                ])
+              }
+              className={styles.btn}>
+              В корзину
+            </button>
+          </>
         ) : (
           <Link className={styles.btn} to={'/login'}>
             В корзину
@@ -55,7 +65,7 @@ const Itemblock = (props) => {
         <Link className={[styles.btn, styles.confBtn].join(' ')} to={'/cart'}>
           В корзине
         </Link>
-      )}
+      )} */}
     </div>
   );
 };

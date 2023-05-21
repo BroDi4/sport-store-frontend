@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import SearchBlock from '../components/SearchBlock/SearchBlock';
 import Filter from '../components/Filter/Filter';
-import Booklist from '../components/Itemlist/Itemlist';
+import Itemlist from '../components/Itemlist/Itemlist';
 import { Context } from '../App';
 
 const Home = () => {
@@ -28,7 +28,7 @@ const Home = () => {
         onChangeSearch={(value) => setSearchValue(value)}
       />
       <Filter value={activeCategory} onClickCategory={(tag) => setActiveCategory(tag)} />
-      <Booklist books={products} />
+      <Itemlist products={products} />
     </main>
   );
 };
