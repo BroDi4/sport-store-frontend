@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import styles from './Register.module.scss';
@@ -40,13 +40,22 @@ const Register = () => {
           setIsAuth(true);
           localStorage.setItem('token', JSON.stringify(result.token));
           alert('Вы успешно зарегистрировались!');
+        } else if (!result.msg) {
+          const errorArray = result.map((obj) => `\n${obj.msg}`);
+          alert(`${errorArray}`);
         } else {
-          alert('Не удалось зарегистрироваться!\nДлина пароля: 5 символов\nИмя: 3 символа');
+          alert('Не удалось зарегистрироваться!');
         }
       });
   };
   return (
     <>
+      <div className={styles.linkbox}>
+        <Link className={styles.link} to={'/'}>
+          На главную
+        </Link>
+      </div>
+
       <form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
         <h2 className={styles.title}>Создать аккаунт</h2>
         <div className={styles.inputBox}>
@@ -82,7 +91,7 @@ const Register = () => {
               register={register}
               errors={errors.password?.message}
               id="password"
-              type="text"
+              type="password"
               placeholder="Пароль"
             />
           </div>

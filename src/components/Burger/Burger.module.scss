@@ -1,0 +1,46 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.burger {
+  width: 20px;
+  height: 16px;
+  position: relative;
+  span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    margin: auto;
+    left: 0;
+    background-color: $dark-grey;
+    transition: all 0.2s ease-in-out;
+    &:first-child {
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: 0;
+      bottom: 0;
+    }
+    &:last-child {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
+
+.openburger {
+  span {
+    background-color: $blue;
+    &:first-child {
+      top: 7px;
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      width: 0;
+    }
+    &:last-child {
+      bottom: 7px;
+      transform: rotate(-45deg);
+    }
+  }
+}

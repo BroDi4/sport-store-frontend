@@ -34,5 +34,5 @@
 
 .confBtn {
   background-color: darken($blue, 20%);
-  @include confButton(110%, -5%, -50px, 'Перейти в корзину');
+  @include confButton(100%, 0%, -50px, 'Перейти в корзину');
 }

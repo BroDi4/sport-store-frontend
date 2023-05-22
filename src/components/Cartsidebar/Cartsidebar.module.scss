@@ -6,11 +6,10 @@
 }
 
 .inner {
-  // background-color: $grey;
   border: 1px solid rgba($dark-grey, 0.3);
   border-radius: 10px;
-  padding: 50px 30px;
-  margin-bottom: 10px;
+  padding: 50px 25px;
+  margin: 15px 0;
 }
 
 .countBox {
@@ -38,4 +37,65 @@
   display: block;
   width: 100%;
   @include button(white, $blue);
+}
+
+.deliveryBtn {
+  @include hoverLine($blue);
+  margin-top: 10px;
+  font-size: 17px;
+  color: $dark-grey;
+}
+
+.ways {
+  @include flex(flex-start);
+  margin: 20px 0 3px 0;
+}
+
+.item {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid rgba($dark-grey, 0.3);
+}
+
+.orderInfo {
+  font-size: 13px;
+  color: $dark-grey;
+}
+
+.active {
+  border: 1px solid $blue;
+}
+
+.orderBlock {
+  margin-top: 15px;
+  color: $dark-grey;
+  span {
+    margin-left: 10px;
+    font-weight: bold;
+    color: $blue;
+  }
+}
+
+.address {
+  border: 1px solid rgba($dark-grey, 0.3);
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  padding: 10px 15px;
+  color: $dark-grey;
+  width: 100%;
+}
+
+.confirmBtn {
+  margin-top: 15px;
+}
+
+.error {
+  border: 1px solid $red;
+  border-radius: 5px;
+  padding: 20px 15px;
+  display: block;
+  color: $red;
+  margin-top: 10px;
+  font-size: 16px;
 }

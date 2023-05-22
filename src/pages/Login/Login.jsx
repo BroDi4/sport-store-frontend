@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -7,7 +7,7 @@ import { Context } from '../../App';
 import Input from '../../components/UI/Input/Input';
 
 const Login = () => {
-  const { isAuth, setIsAuth, setCart } = useContext(Context);
+  const { isAuth, setIsAuth, setCart, setFavorite } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -38,6 +38,7 @@ const Login = () => {
         if (result._id) {
           setIsAuth(true);
           setCart(result.cart);
+          setFavorite(result.favorites);
           localStorage.setItem('token', JSON.stringify(result.token));
         } else {
           alert('Не удалось авторизироваться, проверьте логин и пароль');
@@ -47,6 +48,11 @@ const Login = () => {
 
   return (
     <>
+      <div className={styles.linkbox}>
+        <Link className={styles.link} to={'/'}>
+          На главную
+        </Link>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
         <h2 className={styles.title}>Войти в аккаунт</h2>
         <div className={styles.inputBox}>
@@ -70,7 +76,7 @@ const Login = () => {
               register={register}
               errors={errors.password?.message}
               id="password"
-              type="text"
+              type="password"
               placeholder="Пароль"
             />
           </div>

@@ -18,6 +18,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
+  const [openBurger, setOpenBurger] = useState(false);
   const [filter, setFilter] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -49,20 +50,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const data = {
-      cart: cart,
-      favorites: favorite,
-    };
-    fetch('http://localhost:4000/user', {
-      method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
+    if (localStorage.getItem('token')) {
+      const data = {
+        cart: cart,
+        favorites: favorite,
+      };
+      fetch('http://localhost:4000/user', {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+        body: JSON.stringify(data),
+      });
+    }
   }, [cart, favorite]);
 
   return (
@@ -78,6 +79,8 @@ function App() {
           setActiveCategory,
           favorite,
           setFavorite,
+          openBurger,
+          setOpenBurger,
         }}>
         <Header />
         <div className="container">

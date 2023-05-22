@@ -7,9 +7,58 @@
   transition: all ease-in-out 0.1s;
 }
 
-.hidden {
-  display: none;
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  padding: 50px 15px;
+  right: 0;
+  transform: translateX(100%);
+  background-color: $grey;
+  transition: all 0.4s ease-in-out;
 }
+
+.active {
+  transform: translateX(0);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  @include flex(flex-start);
+  font-size: 19px;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  background-color: rgba($dark-grey, 0.5);
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  &:hover {
+    background-color: $blue;
+    transform: scale(1.03);
+  }
+}
+.exit {
+  &:hover {
+    background-color: $red;
+  }
+}
+
+// .hidden {
+//   display: none;
+// }
 
 .title {
   color: $blue;
@@ -24,71 +73,53 @@
   @include flex(space-between);
 }
 
-.btn {
-  position: relative;
-  @include button(white, $blue);
-  @include flex(center);
-  flex-direction: column;
-  align-items: center;
-  height: 45px;
-  padding: 0 15px;
-  img {
-    width: 20px;
-    height: 20px;
-  }
-  margin-right: 15px;
-}
+// .btn {
+//   position: relative;
+//   @include button(white, $blue);
+//   @include flex(center);
+//   flex-direction: column;
+//   align-items: center;
+//   height: 45px;
+//   padding: 0 15px;
+//   img {
+//     width: 20px;
+//     height: 20px;
+//   }
+//   margin-right: 15px;
+// }
 
-.link {
-  font-size: 12px;
-  font-weight: bold;
-}
+// .link {
+//   font-size: 12px;
+//   font-weight: bold;
+// }
 
-.count {
-  @include productCount;
-}
+// .count {
+//   @include productCount;
+// }
 
-.btns {
-  @include flex(flex-start);
-}
+// .btns {
+//   @include flex(flex-start);
+// }
 
-.logoutBtn {
-  @include button(white, $red);
-  height: 45px;
-  padding: 10px;
-  img {
-    width: 25px;
-    height: 25px;
-  }
-}
+// .logoutBtn {
+//   @include button(white, $red);
+//   height: 45px;
+//   padding: 10px;
+//   img {
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
 
-.linkBtn {
-  @include button(white, $blue);
-  border: 1px solid $blue;
-  margin-right: 10px;
-  padding: 10px 30px;
-}
+// .linkBtn {
+//   @include button(white, $blue);
+//   border: 1px solid $blue;
+//   margin-right: 10px;
+//   padding: 10px 30px;
+// }
 
-.regLinkBtn {
-  @include button($blue, $grey);
-  border: 1px solid rgba($dark-grey, 0.5);
-  padding: 10px 30px;
-}
-
-.imgbox {
-  @include flex(center);
-  border-right: 1px solid $grey;
-  margin-right: 25px;
-  padding: 0 20px;
-  span {
-    min-width: 25px;
-    margin-right: 5px;
-  }
-  img {
-    width: 24px;
-    height: 24px;
-  }
-  @media (max-width: 375px) {
-    padding: 0 5px 0 0;
-  }
-}
+// .regLinkBtn {
+//   @include button($blue, $grey);
+//   border: 1px solid rgba($dark-grey, 0.5);
+//   padding: 10px 30px;
+// }

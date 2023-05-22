@@ -2,13 +2,17 @@
 @import '../../scss/mixins';
 
 .root {
-  // background-color: $grey;
   border-radius: 5px;
   padding: 15px 0;
   color: $dark-grey;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .imgBox {
+  display: block;
   border-radius: 10px;
   width: 100%;
   height: 450px;

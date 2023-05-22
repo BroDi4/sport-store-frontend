@@ -1,68 +1,108 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
-import { Context } from '../../App';
+import Burger from '../Burger/Burger';
+import Navbar from '../Navbar/Navbar';
 import cartLogo from '../../assets/img/cart.svg';
 import favoriteLogo from '../../assets/img/favorite.svg';
 import logoutLogo from '../../assets/img/logout.svg';
+import { Context } from '../../App';
 
 const Header = () => {
-  const { cart, setCart, isAuth, setIsAuth, favorite } = useContext(Context);
+  const [isBurger, setIsBurger] = useState(false);
+  const { openBurger, setOpenBurger, isAuth, setIsAuth, setCart, setFavorite } =
+    useContext(Context);
 
-  const logout = () => {
-    setIsAuth(false);
-    setCart([]);
-    localStorage.removeItem('token');
+  const checkResize = () => {
+    if (window.innerWidth <= 769) {
+      setIsBurger(true);
+    } else {
+      setIsBurger(false);
+      setOpenBurger(false);
+    }
   };
 
-  const cartPrice = cart.reduce((sum, obj) => sum + obj.priceFinal, 0);
+  useEffect(() => {
+    checkResize();
+    window.addEventListener('resize', checkResize);
+    return () => {
+      window.removeEventListener('resize', checkResize);
+    };
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setIsAuth(false);
+    setCart([]);
+    setFavorite([]);
+    setOpenBurger(false);
+  };
 
   return (
     <div className={styles.header}>
       <div className={[styles.inner, 'container'].join(' ')}>
-        <Link to={'/'}>
+        <Link
+          to={'/'}
+          onClick={() => {
+            setOpenBurger(false);
+          }}>
           <div className={styles.title}>Sport&Clothes</div>
         </Link>
+        {isBurger ? (
+          <Burger isBurger={isBurger} setIsBurger={setIsBurger} />
+        ) : (
+          <Navbar logout={logout} />
+        )}
+      </div>
 
+      <div className={[styles.modal, openBurger ? styles.active : ''].join(' ')}>
         {isAuth ? (
-          <div className={styles.btns}>
-            <Link to={'/favorite'}>
-              <div className={styles.btn}>
-                <img src={favoriteLogo} alt="" />
-                <span
-                  className={[styles.count, favorite.length === 0 ? styles.hidden : ' '].join(' ')}>
-                  {favorite.length}
-                </span>
-                <span className={styles.link}>Избранное</span>
-              </div>
+          <div className={styles.list}>
+            <Link
+              onClick={() => {
+                setOpenBurger(false);
+              }}
+              className={styles.link}
+              to={'/favorite'}>
+              <img src={favoriteLogo} alt="" />
+              <span>Избранное</span>
             </Link>
-            <Link to={'/cart'}>
-              <div className={styles.btn}>
-                <img src={cartLogo} alt="" />
-                <span className={[styles.count, cart.length === 0 ? styles.hidden : ' '].join(' ')}>
-                  {cart.length}
-                </span>
-                <span className={styles.link}>
-                  {cart.length === 0 ? 'Корзина' : `${cartPrice} ₽`}
-                </span>
-              </div>
+            <Link
+              onClick={() => {
+                setOpenBurger(false);
+              }}
+              className={styles.link}
+              to={'/cart'}>
+              <img src={cartLogo} alt="" />
+              <span>Корзина</span>
             </Link>
             <button
-              className={styles.logoutBtn}
+              className={[styles.link, styles.exit].join(' ')}
               onClick={() => {
                 logout();
               }}>
               <img src={logoutLogo} alt="" />
+              <span>Выйти</span>
             </button>
           </div>
         ) : (
-          <div className={styles.btns}>
-            <Link className={styles.linkBtn} to={'/login'}>
+          <div className={styles.list}>
+            <Link
+              onClick={() => {
+                setOpenBurger(false);
+              }}
+              className={styles.link}
+              to={'/login'}>
               Войти
             </Link>
-            <Link className={styles.regLinkBtn} to={'/register'}>
-              Создать аккаунт
+            <Link
+              onClick={() => {
+                setOpenBurger(false);
+              }}
+              className={styles.link}
+              to={'/register'}>
+              Зарегистрироваться
             </Link>
           </div>
         )}
