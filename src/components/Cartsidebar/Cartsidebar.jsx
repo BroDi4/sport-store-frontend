@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../../axios';
 
 import styles from './Cartsidebar.module.scss';
 import Modal from '../UI/Modal/Modal';
@@ -18,29 +19,19 @@ const CartSidebar = () => {
     { name: 'Пункт выдачи', tag: 'store' },
   ];
 
-  const onSubmit = () => {
-    if (address !== '' || selectedWay === 'store') {
-      const params = { orders: [...cart], type: selectedWay, address: address };
-      fetch('http://localhost:4000/order', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-        },
-        body: JSON.stringify(params),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.id) {
-            setCart([]);
-            alert('Заказ оформлен!');
-            navigate('/');
-          } else {
-            alert('Не удалось оформить заказ!');
-          }
-        });
-    } else {
-      setError(true);
+  const onSubmit = async () => {
+    try {
+      if (address !== '' || selectedWay === 'store') {
+        const params = { orders: [...cart], type: selectedWay, address: address };
+        await axios.post('/order', params);
+        setCart([]);
+        alert('Заказ оформлен!');
+        navigate('/');
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      alert('Не удалось создать заказ');
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axios from '../../axios';
 
 import styles from './Register.module.scss';
 import Input from '../../components/UI/Input/Input';
@@ -25,28 +26,15 @@ const Register = () => {
     return <Navigate to="/" />;
   }
 
-  const onSubmit = (value) => {
-    const params = { ...value };
-    fetch('http://localhost:4000/register', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(params),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result._id) {
-          setIsAuth(true);
-          localStorage.setItem('token', JSON.stringify(result.token));
-          alert('Вы успешно зарегистрировались!');
-        } else if (!result.msg) {
-          const errorArray = result.map((obj) => `\n${obj.msg}`);
-          alert(`${errorArray}`);
-        } else {
-          alert('Не удалось зарегистрироваться!');
-        }
-      });
+  const onSubmit = async (value) => {
+    try {
+      const { data } = await axios.post('/register', value);
+      setIsAuth(true);
+      alert('Вы успешно зарегистрировались!');
+      localStorage.setItem('token', data.token);
+    } catch (err) {
+      alert('Не удалось зарегистрироваться');
+    }
   };
   return (
     <>

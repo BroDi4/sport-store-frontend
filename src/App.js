@@ -1,7 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import axios from './axios';
 
-import './App.css';
+import './scss/main.scss';
+import './scss/reset.scss';
 import Header from './components/Header/Header';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -22,48 +24,45 @@ function App() {
   const [filter, setFilter] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
 
-  useEffect(() => {
-    fetch('http://localhost:4000/categories')
-      .then((res) => res.json())
-      .then((arr) => setFilter([{ name: 'Все', tag: 'all' }, ...arr]))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      fetch('http://localhost:4000/user', {
-        method: 'get',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          setCart(result.cart);
-          setFavorite(result.favorites);
-          if (!result.msg) {
-            setIsAuth(true);
-          }
-        });
+  const fetchCategories = async () => {
+    try {
+      const { data } = await axios.get('/categories');
+      setFilter([{ name: 'Все', tag: 'all' }, ...data]);
+    } catch (err) {
+      alert('Не удалось получить данные!');
     }
-  }, []);
+  };
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
+  const fetchAuth = async () => {
+    try {
+      const { data } = await axios.get('/user');
+      setCart(data.cart);
+      setFavorite(data.favorites);
+      setIsAuth(true);
+    } catch (err) {
+      console.log('Cant auth user');
+    }
+  };
+
+  const fetchUserChange = async () => {
+    try {
       const data = {
         cart: cart,
         favorites: favorite,
       };
-      fetch('http://localhost:4000/user', {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-        },
-        body: JSON.stringify(data),
-      });
+      await axios.patch('/user', data);
+    } catch (err) {
+      console.log('Cant send data');
     }
+  };
+
+  useEffect(() => {
+    fetchAuth();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    fetchUserChange();
   }, [cart, favorite]);
 
   return (

@@ -47,7 +47,7 @@ const Header = () => {
           onClick={() => {
             setOpenBurger(false);
           }}>
-          <div className={styles.title}>Sport&Clothes</div>
+          <div className={styles.title}>SportLegacy</div>
         </Link>
         {isBurger ? (
           <Burger isBurger={isBurger} setIsBurger={setIsBurger} />

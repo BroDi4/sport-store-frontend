@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axios from '../../axios';
 
 import styles from './Login.module.scss';
 import { Context } from '../../App';
@@ -24,26 +25,16 @@ const Login = () => {
     return <Navigate to="/" />;
   }
 
-  const onSubmit = (value) => {
-    const params = { ...value };
-    fetch('http://localhost:4000/login', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(params),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result._id) {
-          setIsAuth(true);
-          setCart(result.cart);
-          setFavorite(result.favorites);
-          localStorage.setItem('token', JSON.stringify(result.token));
-        } else {
-          alert('Не удалось авторизироваться, проверьте логин и пароль');
-        }
-      });
+  const onSubmit = async (value) => {
+    try {
+      const { data } = await axios.post('/login', value);
+      setIsAuth(true);
+      setCart(data.cart);
+      setFavorite(data.favorites);
+      localStorage.setItem('token', data.token);
+    } catch (err) {
+      alert('Не удалось авторизироваться, проверьте логин и пароль');
+    }
   };
 
   return (
