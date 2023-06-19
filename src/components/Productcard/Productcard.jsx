@@ -13,9 +13,9 @@ const Productcard = () => {
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
 
-  const fetchUser = async () => {
+  const fetchProduct = async () => {
     try {
-      const { data } = axios.get(`/products/${id}`);
+      const { data } = await axios.get(`/products/${id}`);
       setProduct(data);
     } catch (err) {
       console.log('cant get user');
@@ -23,7 +23,7 @@ const Productcard = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    fetchProduct();
   }, [id]);
 
   return (
