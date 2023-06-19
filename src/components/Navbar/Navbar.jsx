@@ -43,15 +43,16 @@ const Navbar = ({ logout }) => {
               logout();
             }}>
             <img src={logoutLogo} alt="" />
+            <span>Выйти</span>
           </button>
         </div>
       ) : (
         <div className={styles.btns}>
           <Link className={styles.linkBtn} to={'/login'}>
-            Войти
+            Войти в аккаунт
           </Link>
-          <Link className={styles.regLinkBtn} to={'/register'}>
-            Создать аккаунт
+          <Link className={styles.linkBtn} to={'/register'}>
+            Зарегистрироваться
           </Link>
         </div>
       )}

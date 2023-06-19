@@ -118,6 +118,10 @@
   color: $dark-grey;
   margin: 0 15px;
   text-align: right;
+  background-color: $blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
   min-width: 70px;
   @media (max-width: 590px) {
     margin: 0 30px;

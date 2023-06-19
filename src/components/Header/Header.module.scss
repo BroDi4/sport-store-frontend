@@ -56,10 +56,6 @@
   }
 }
 
-// .hidden {
-//   display: none;
-// }
-
 .title {
   color: $blue;
   font-size: 20px;
@@ -72,54 +68,3 @@
 .inner {
   @include flex(space-between);
 }
-
-// .btn {
-//   position: relative;
-//   @include button(white, $blue);
-//   @include flex(center);
-//   flex-direction: column;
-//   align-items: center;
-//   height: 45px;
-//   padding: 0 15px;
-//   img {
-//     width: 20px;
-//     height: 20px;
-//   }
-//   margin-right: 15px;
-// }
-
-// .link {
-//   font-size: 12px;
-//   font-weight: bold;
-// }
-
-// .count {
-//   @include productCount;
-// }
-
-// .btns {
-//   @include flex(flex-start);
-// }
-
-// .logoutBtn {
-//   @include button(white, $red);
-//   height: 45px;
-//   padding: 10px;
-//   img {
-//     width: 25px;
-//     height: 25px;
-//   }
-// }
-
-// .linkBtn {
-//   @include button(white, $blue);
-//   border: 1px solid $blue;
-//   margin-right: 10px;
-//   padding: 10px 30px;
-// }
-
-// .regLinkBtn {
-//   @include button($blue, $grey);
-//   border: 1px solid rgba($dark-grey, 0.5);
-//   padding: 10px 30px;
-// }

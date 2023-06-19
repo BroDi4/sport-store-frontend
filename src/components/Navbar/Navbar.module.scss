@@ -35,11 +35,15 @@
 
 .logoutBtn {
   @include button(white, $red);
+  @include flex(center);
+  flex-direction: column;
   height: 45px;
   padding: 10px;
+  font-size: 12px;
+  font-weight: bold;
   img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -47,11 +51,5 @@
   @include button(white, $blue);
   border: 1px solid $blue;
   margin-right: 10px;
-  padding: 10px 30px;
-}
-
-.regLinkBtn {
-  @include button($blue, $grey);
-  border: 1px solid rgba($dark-grey, 0.5);
   padding: 10px 30px;
 }

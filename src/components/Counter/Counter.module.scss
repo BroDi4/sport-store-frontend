@@ -3,6 +3,7 @@
 
 .counter {
   max-width: 110px;
+  border-radius: 15px;
   @include flex(space-between);
   flex-shrink: 0;
   background-color: white;
@@ -14,6 +15,7 @@
     padding: 0 10px;
     height: 100%;
     font-size: 18px;
+    border-radius: 15px;
   }
 }
 
@@ -29,6 +31,7 @@
   width: 100%;
   font-size: 18px;
   appearance: textfield;
+
   &:focus {
     border: 1px solid $blue;
   }
