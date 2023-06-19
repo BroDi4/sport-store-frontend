@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import axios from '../axios';
 
 import SearchBlock from '../components/SearchBlock/SearchBlock';
 import Filter from '../components/Filter/Filter';
@@ -11,12 +12,15 @@ const Home = () => {
   const [selectedSort, setSelectedSort] = useState({ name: 'По возрастанию цены', tag: 'price' });
   const [searchValue, setSearchValue] = useState('');
 
+  const fetchProducts = async () => {
+    const { data } = await axios.get(
+      `/products?search=${searchValue}&sort=${selectedSort.tag}&category=${activeCategory}`,
+    );
+    setProducts(data);
+  };
+
   useEffect(() => {
-    fetch(
-      `http://localhost:4000/products?search=${searchValue}&sort=${selectedSort.tag}&category=${activeCategory}`,
-    )
-      .then((res) => res.json())
-      .then((result) => setProducts(result));
+    fetchProducts();
   }, [activeCategory, selectedSort, searchValue]);
 
   return (
