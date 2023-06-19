@@ -20,7 +20,11 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    try {
+      fetchProducts();
+    } catch (err) {
+      console.log('cant resive products');
+    }
   }, [activeCategory, selectedSort, searchValue]);
 
   return (

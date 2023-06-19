@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import axios from '../../axios';
 
 import styles from './Productcard.module.scss';
 import SizeBlock from '../SizeBlock/SizeBlock';
@@ -12,15 +13,16 @@ const Productcard = () => {
   const [activeSize, setActiveSize] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
 
+  const fetchUser = async () => {
+    try {
+      const { data } = axios.get(`/products/${id}`);
+      setProduct(data);
+    } catch (err) {
+      console.log('cant get user');
+    }
+  };
+
   useEffect(() => {
-    const fetchUser = async () => {
-      let product = await fetch(`http://localhost:4000/products/${id}`);
-      product = await product.json();
-      if (product.error) {
-        return <Navigate to={'/notfound'} />;
-      }
-      setProduct(product);
-    };
     fetchUser();
   }, [id]);
 
@@ -74,34 +76,6 @@ const Productcard = () => {
                 Цена: <span>{product.price} ₽</span>
               </p>
               <BuyBlock params={product} activeSize={activeSize} activeColor={activeColor} />
-              {/* {cart.findIndex((obj) => obj._id === product._id) === -1 ? (
-                isAuth ? (
-                  <button
-                    className={styles.btn}
-                    onClick={() =>
-                      setCart([
-                        ...cart,
-                        {
-                          ...product,
-                          count: 1,
-                          priceFinal: product.price,
-                          currSize: product.sizes[activeSize],
-                          currColor: product.colors[activeColor],
-                        },
-                      ])
-                    }>
-                    Купить
-                  </button>
-                ) : (
-                  <Link className={styles.btn} to={'/login'}>
-                    Купить
-                  </Link>
-                )
-              ) : (
-                <Link className={styles.confButton} to="/cart">
-                  В корзине
-                </Link>
-              )} */}
             </div>
           </div>
           <div className={styles.description}>
