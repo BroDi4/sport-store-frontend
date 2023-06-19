@@ -32,7 +32,7 @@ const Productcard = () => {
         Назад
       </Link>
 
-      {product._id && (
+      {product?._id && (
         <div className={styles.root}>
           <div className={styles.header}>
             <div className={styles.imgBox}>
